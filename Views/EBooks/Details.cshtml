@@ -1,0 +1,32 @@
+﻿@model ASP_Project.Models.EBook
+
+@{
+    ViewData["Title"] = "Details";
+    var x = (int)(Model.BookPrice * ViewBag.Tax);
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EBook</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookPrice)
+        </dt>
+      
+        <dd class = "col-sm-10">
+            @x.ToString("c")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.EBookId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

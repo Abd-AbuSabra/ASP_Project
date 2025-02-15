@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ASP_Project.Models.ELibrary>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Book
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genera)
+            </th>
+            <th>
+                Is Available
+            </th>
+            <th>
+                Publishing Date
+            </th>
+            <th>
+                Book Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.eBook.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ELibraryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ELibraryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ELibraryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
